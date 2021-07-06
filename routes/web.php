@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('index');
+// });
+
 Route::get('/', function () {
-    return view('index');
+    return view('products', [
+        'products' => Product::all()
+    ]);
 });
 
-Route::get('/produtos', function () {
-    return view('produtos');
-});
-
-Route::get('/produto', function () {
-    return view('produto');
+Route::get('/products/{product}', function($id) {
+    return view('product', [
+        'product' => Product::find($id)
+    ]);
 });
