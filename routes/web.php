@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,12 +22,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('products', [
-        'products' => Product::all()
+        'products' => Product::latest('updated_at')->with('category')->get()
     ]);
 });
 
-Route::get('/products/{product}', function($id) {
+Route::get('/products/{product:slug}', function(Product $product) {
     return view('product', [
-        'product' => Product::find($id)
+        'product' => $product
+    ]);
+});
+
+Route::get('categories/{category:slug}', function(Category $category){
+    return view('category', [
+        'category' => $category
+    ]);
+});
+
+Route::get('users/{user:first_name}', function(User $user){
+    return view('user', [
+        'user' => $user
     ]);
 });

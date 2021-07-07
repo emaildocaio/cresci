@@ -9,12 +9,17 @@
 </head>
 <body>
     <article>
-       <h1>{{$product->title}}</h1>
-        <a href="/categories/{{$product->category->slug}}"><p>{{$product->category->name}}</p></a>
-        <p>Vendido por <a href="/users/{{$product->user->first_name}}"><b>{{$product->user->first_name}} {{$product->user->last_name}}</b></p></a>
+       <h1>{{$user->first_name}} {{$user->last_name}}</h1>
+     
+       
+       @foreach ($user->product as $product)
+           <a href="/products/{{$product->slug}}"><h3>{{$product->title}}</h3></a>
+           <p>{{$product->excerpt}}</p>
 
-       <h3>{{$product->excerpt}}</h3> 
-       <p>{!!$product->description!!}</p>
+       @endforeach
+       
+
+       
 
     </article>
     <a href="/">Voltar</a>

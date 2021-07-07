@@ -11,7 +11,8 @@
     <h1>Todos os Produtos</h1>
     @foreach ($products as $product)
         <article>
-            <a href="/products/{{$product->id}}"><h2>{{$product->title}}</h2></a>
+            <a href="/products/{{$product->slug}}"><h2>{{$product->title}}</h2></a>
+            <a href="/categories/{{$product->category->slug}}"><p>{{$product->category->name}}</p></a>
             <p>{{$product->excerpt}}</p>
         </article>
     @endforeach
