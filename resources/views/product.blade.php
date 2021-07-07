@@ -11,7 +11,7 @@
     <article>
        <h1>{{$product->title}}</h1>
         <a href="/categories/{{$product->category->slug}}"><p>{{$product->category->name}}</p></a>
-        <p>Vendido por <a href="/users/{{$product->user->first_name}}"><b>{{$product->user->first_name}} {{$product->user->last_name}}</b></p></a>
+        <p>Vendido por <a href="/users/{{$product->user->username}}"><b>{{$product->user->first_name}} {{$product->user->last_name}}</b></p></a>
 
        <h3>{{$product->excerpt}}</h3> 
        <p>{!!$product->description!!}</p>

@@ -12,6 +12,7 @@
     @foreach ($products as $product)
         <article>
             <a href="/products/{{$product->slug}}"><h2>{{$product->title}}</h2></a>
+            <p>Vendido por <a href="/users/{{$product->user->username}}"><b>{{$product->user->first_name}} {{$product->user->last_name}}</b></p></a>
             <a href="/categories/{{$product->category->slug}}"><p>{{$product->category->name}}</p></a>
             <p>{{$product->excerpt}}</p>
         </article>

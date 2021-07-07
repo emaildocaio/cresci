@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('products', [
-        'products' => Product::latest('updated_at')->with('category')->get()
+        'products' => Product::latest('updated_at')->with('category', 'user')->get()
     ]);
 });
 
@@ -38,7 +38,7 @@ Route::get('categories/{category:slug}', function(Category $category){
     ]);
 });
 
-Route::get('users/{user:first_name}', function(User $user){
+Route::get('users/{user:username}', function(User $user){
     return view('user', [
         'user' => $user
     ]);

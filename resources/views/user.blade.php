@@ -14,6 +14,7 @@
        
        @foreach ($user->product as $product)
            <a href="/products/{{$product->slug}}"><h3>{{$product->title}}</h3></a>
+           <a href="/categories/{{$product->category->slug}}"><h3>{{$product->category->name}}</h3></a>
            <p>{{$product->excerpt}}</p>
 
        @endforeach
